@@ -7,7 +7,5 @@
 // import './04_修饰符'
 // import './05_readonly修饰符'
 // import './06_存取器'
-// import './07_静态成员'
-// import './08_抽象类'
-import './01_函数'
+import './07_静态成员'
 document.write('我又变胖了')
