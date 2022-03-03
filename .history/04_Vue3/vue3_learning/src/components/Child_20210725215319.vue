@@ -1,0 +1,31 @@
+<template>
+  <h2>Child子级组件</h2>
+  <h3>msg:{{ msg }}</h3>
+</template>
+
+<script lang='ts'>
+import { defineComponent, reactive } from "vue";
+export default defineComponent({
+  name: "Child",
+  props: ["msg"],
+  components: {},
+  // setup细节问题
+  // setup是在beforeCreate生命周期回调之前就执行了，而且就执行一次
+  // 由此可以推断出：setup在执行时当前组件还没有创建出来，也就意味着：组件实例对象this根本就不能用
+  // 数据初始化的生命周期回调
+  beforeCreate() {
+    console.log("beforeCreate执行了");
+  },
+  // 界面渲染完毕
+  //   mounted(){},
+  setup() {
+    console.log("setup执行了", this);
+    return {
+      // setup一般都是返回一个对象，对象中的属性和方法都可以在html目标中直接使用
+    };
+  },
+});
+</script>
+
+<style scoped>
+</style>

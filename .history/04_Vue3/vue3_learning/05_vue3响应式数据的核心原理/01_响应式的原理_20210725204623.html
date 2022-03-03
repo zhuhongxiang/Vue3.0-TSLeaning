@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+    // 目标对象
+    const user = {
+        name:'佐助',
+        age:20,
+        wife:{
+            name:'小樱',
+            age:19
+        }
+    }
+    // 把目标对象变成代理对象
+    // 参数1：user---->target目标对象
+    // 参数2：handler---->处理器对象，用来监视数据及数据的操作
+    const proxyUser = new Proxy(user,{
+        get(target,prop){
+            console.log('get方法调用了')
+            return Reflect.get(target,prop)
+        },
+        set(){},
+        deleteProperty(){}
+    })
+
+    // 通过代理对象获取目标对象中的某个值
+    console.log(proxyUser.name)
+    </script>
+</body>
+</html>
